@@ -24,3 +24,6 @@ hs_err_pid*
 
 # partial build
 changed.projects
+
+# targets
+*target/
