@@ -79,7 +79,7 @@
         <version>2.7</version>
         <extensions>true</extensions>
          <configuration>
-          <referenceBranch>refs/remotes/origin/master</referenceBranch>
+          <referenceBranch>refs/remotes/origin/main</referenceBranch>
          </configuration>
       </plugin>
     </plugins>
