@@ -27,3 +27,6 @@ changed.projects
 
 # targets
 *target/
+
+# mvnw
+*maven-wrapper.jar
