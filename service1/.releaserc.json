@@ -16,8 +16,8 @@
     [
         "@semantic-release/exec",
         {
-            "prepareCmd": "./mvnw -B versions:set -DgenerateBackupPoms=false -DnewVersion=${nextRelease.version}",
-            "publishCmd": "./mvnw -B -DskipTests deploy"
+            "prepareCmd": "../mvnw -pl service1 -B versions:set -DgenerateBackupPoms=false -DnewVersion=${nextRelease.version}",
+            "publishCmd": ".,/mvnw -pl service1 -B -DskipTests deploy"
         }
     ],
     [

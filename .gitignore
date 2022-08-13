@@ -30,3 +30,6 @@ changed.projects
 
 # mvnw
 *maven-wrapper.jar
+
+# settings
+settings.xml
