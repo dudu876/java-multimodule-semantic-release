@@ -1,9 +1,8 @@
 {
   "branches": [{"name": "main"}],
   "repositoryUrl": "https://github.com/Dudu876/java-multimodule-semantic-release",
-  "tagFormat": "service1_${version}"
+  "tagFormat": "service1_${version}",
   "debug": "true",
-  "extends": "semantic-release-monorepo",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",

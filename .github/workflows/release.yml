@@ -35,7 +35,7 @@ jobs:
       run: npm install -g semantic-release semantic-release-monorepo @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
     - name: release
       working-directory: ./service1
-      run: npx semantic-release -e semantic-release-monorepo
+      run: npx semantic-release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         DOCKER_USERNAME: Dudu876
