@@ -16,7 +16,7 @@
     [
         "@semantic-release/exec",
         {
-            "publishCmd": "../mvnw -B -pl com.dudu:service2 -DskipTests -service2.version=${nextRelease.version} clean deploy"
+            "publishCmd": "../mvnw -B -pl com.dudu:service2 -DskipTests -Dservice2.version=${nextRelease.version} clean deploy"
         }
     ],
     [
