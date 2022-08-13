@@ -14,6 +14,13 @@
       }
     ],
     [
+        "@semantic-release/exec",
+        {
+            "prepareCmd": "./mvnw -B versions:set -DgenerateBackupPoms=false -DnewVersion=${nextRelease.version}",
+            "publishCmd": "./mvnw -B -DskipTests deploy"
+        }
+    ],
+    [
       "@semantic-release/git",
       {
         "assets": ["CHANGELOG.md"]
