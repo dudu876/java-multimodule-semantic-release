@@ -1,0 +1,14 @@
+{
+  "branches": [{"name": "main"}],
+  "repositoryUrl": "https://github.com/Dudu876/java-multimodule-semantic-release",
+  "tagFormat": "${version}",
+  "debug": "true",
+  "plugins": [
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["core/CHANGELOG.md", "service1/CHANGELOG.md", "service2/CHANGELOG.md"]
+      }
+    ]
+  ]
+}
