@@ -17,14 +17,8 @@
         "@semantic-release/exec",
         {
             "prepareCmd": "../mvnw -pl com.dudu:core -B versions:set -DgenerateBackupPoms=false -DnewVersion=${nextRelease.version}",
-            "publishCmd": "../mvnw -pl com.dudu:core -B -DskipTests deploy"
+            "publishCmd": "../mvnw -pl com.dudu:core -B -DskipTests clean deploy"
         }
-    ],
-    [
-      "@semantic-release/git",
-      {
-        "assets": ["CHANGELOG.md"]
-      }
     ],
     [
       "@semantic-release/github",

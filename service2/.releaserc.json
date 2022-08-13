@@ -17,7 +17,7 @@
         "@semantic-release/exec",
         {
             "prepareCmd": "../mvnw -B -pl com.dudu:service2 versions:set -DgenerateBackupPoms=false -DnewVersion=${nextRelease.version}",
-            "publishCmd": "../mvnw -B -pl com.dudu:service2 -DskipTests deploy"
+            "publishCmd": "../mvnw -B -pl com.dudu:service2 -DskipTests clean deploy"
         }
     ],
     [
