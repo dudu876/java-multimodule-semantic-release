@@ -28,8 +28,7 @@ changed.projects
 # targets
 *target/
 
-# mvnw
+# maven
 *maven-wrapper.jar
-
-# settings
 settings.xml
+*.flattened-pom.xml

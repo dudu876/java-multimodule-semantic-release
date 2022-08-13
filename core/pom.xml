@@ -9,7 +9,7 @@
 
   <groupId>com.dudu</groupId>
   <artifactId>core</artifactId>
-  <version>1.0.6</version>
+  <version>${core.version}</version>
   <packaging>jar</packaging>
 
   <name>core</name>
@@ -41,7 +41,10 @@
 
   <build>
     <plugins>
-      
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+      </plugin>
     </plugins>
   </build>
 </project>

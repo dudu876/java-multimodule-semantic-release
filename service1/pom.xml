@@ -9,7 +9,7 @@
 
   <groupId>com.dudu</groupId>
   <artifactId>service1</artifactId>
-  <version>1.0.11</version>
+  <version>${service1.version}</version>
   <packaging>jar</packaging>
 
   <distributionManagement>
@@ -41,7 +41,10 @@
 
   <build>
     <plugins>
-      
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+      </plugin>
     </plugins>
   </build>
 </project>
