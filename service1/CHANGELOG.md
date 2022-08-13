@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.0.3](https://github.com/Dudu876/java-multimodule-semantic-release/compare/service1_1.0.2...service1_1.0.3) (2022-08-13)
+
+
+### Bug Fixes
+
+* test ([cf32246](https://github.com/Dudu876/java-multimodule-semantic-release/commit/cf32246662fe3dd508db82ea5494e943f0a120a3))
+
 ## [1.0.2](https://github.com/Dudu876/java-multimodule-semantic-release/compare/service1_1.0.1...service1_1.0.2) (2022-08-13)
 
 
