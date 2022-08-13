@@ -32,7 +32,7 @@ jobs:
     # - name: Docker build
     #   run: docker build -t dudu876/java-semantic-release .
     - name: setup semantic-release
-      run: npm install -g semantic-release semantic-release-monorepo @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
+      run: npm install -g semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
     - name: release core
       working-directory: ./core
       run: npx semantic-release
