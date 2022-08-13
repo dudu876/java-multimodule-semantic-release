@@ -1,0 +1,40 @@
+{
+  "branches": [{"name": "main"}],
+  "repositoryUrl": "https://github.com/Dudu876/java-multimodule-semantic-release",
+  "tagFormat": "core_${version}",
+  "debug": "true",
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "CHANGELOG.md",
+        "changelogTitle": "# Semantic Versioning Changelog"
+      }
+    ],
+    [
+        "@semantic-release/exec",
+        {
+            "prepareCmd": "../mvnw -pl com.dudu:core -B versions:set -DgenerateBackupPoms=false -DnewVersion=${nextRelease.version}",
+            "publishCmd": "../mvnw -pl com.dudu:core -B -DskipTests deploy"
+        }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["CHANGELOG.md"]
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          {
+            "path": "target/*.jar"
+          }
+        ]
+      }
+    ]
+  ]
+}
