@@ -54,10 +54,10 @@ jobs:
     #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     #     DOCKER_USERNAME: Dudu876
     #     DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-    - name: commit changelog
-      run: |
-          git config --global user.name 'semantic-release-bot'
-          git config --global user.email 'semantic-release-bot@martynus.net'
-          git add '**/CHANGELOG.md' .
-          git commit -m "chore(changelog): Update CHANGELOGs [skip ci]"
-          git push
+    # - name: commit changelog
+    #   run: |
+    #       git config --global user.name 'semantic-release-bot'
+    #       git config --global user.email 'semantic-release-bot@martynus.net'
+    #       git add '**/CHANGELOG.md' .
+    #       git commit -m "chore(changelog): Update CHANGELOGs [skip ci]"
+    #       git push
