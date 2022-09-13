@@ -33,27 +33,27 @@ jobs:
     #   run: docker build -t dudu876/java-semantic-release .
     - name: setup semantic-release
       run: npm install -g semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
-    - name: release core
-      working-directory: ./core
-      run: npx semantic-release
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DOCKER_USERNAME: Dudu876
-        DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-    - name: release 1
-      working-directory: ./service1
-      run: npx semantic-release
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DOCKER_USERNAME: Dudu876
-        DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-    - name: release 2
-      working-directory: ./service2
-      run: npx semantic-release
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DOCKER_USERNAME: Dudu876
-        DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+    # - name: release core
+    #   working-directory: ./core
+    #   run: npx semantic-release
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     DOCKER_USERNAME: Dudu876
+    #     DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+    # - name: release 1
+    #   working-directory: ./service1
+    #   run: npx semantic-release
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     DOCKER_USERNAME: Dudu876
+    #     DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+    # - name: release 2
+    #   working-directory: ./service2
+    #   run: npx semantic-release
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     DOCKER_USERNAME: Dudu876
+    #     DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
     - name: commit changelog
       run: |
           git config --global user.name 'semantic-release-bot'
