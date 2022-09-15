@@ -34,12 +34,12 @@ jobs:
     - name: test
       run: |
         VALUE="$(jq -nRc [inputs] changed.projects)"
-        echo '$VALUE'
+        echo "$VALUE"
     - name: setup modules matrix
       id: modules
       run: |
         VALUE="$(jq -nRc [inputs] changed.projects)"
-        echo '::set-output name=value::$VALUE'
+        echo "::set-output name=value::$VALUE"
     # - name: release core
     #   working-directory: ./core
     #   run: npx semantic-release
