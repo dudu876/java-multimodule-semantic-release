@@ -31,6 +31,10 @@ jobs:
       run: ./mvnw -B validate
     # - name: setup semantic-release
     #   run: npm install -g semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
+    - name: test
+      run: |
+        VALUE="$(jq -nRc [inputs] changed.projects)"
+        echo '$VALUE'
     - name: setup modules matrix
       id: modules
       run: |
