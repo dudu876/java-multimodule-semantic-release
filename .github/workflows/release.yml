@@ -23,16 +23,19 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
         cache: maven
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 'lts/*'
-    - name: Build with Maven
-      run: ./mvnw -B package -Dpartial.buildAll=true
-    # - name: Docker build
-    #   run: docker build -t dudu876/java-semantic-release .
-    - name: setup semantic-release
-      run: npm install -g semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
+    # - name: Setup Node.js
+    #   uses: actions/setup-node@v2
+    #   with:
+    #     node-version: 'lts/*'
+    # - name: Build with Maven
+    #   run: ./mvnw -B package
+    # - name: setup semantic-release
+    #   run: npm install -g semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
+    - name: setup modules matrix
+      id: modules
+        run: |
+          VALUE="$(jq -nRc [inputs] changed.projects)"
+          echo '::set-output name=value::$VALUE'
     # - name: release core
     #   working-directory: ./core
     #   run: npx semantic-release

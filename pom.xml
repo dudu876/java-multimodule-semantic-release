@@ -23,6 +23,7 @@
 
     <gib.referenceBranch>refs/remotes/origin/main</gib.referenceBranch>
     <gib.logImpactedTo>changed.projects</gib.logImpactedTo>  
+    <gib.excludePathsMatching>\.github[/\\].*</gib.excludePathsMatching>
   </properties>
   
   <dependencies>
