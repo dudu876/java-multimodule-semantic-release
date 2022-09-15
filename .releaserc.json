@@ -1,7 +1,7 @@
 {
   "branches": [{"name": "main"}],
   "repositoryUrl": "https://github.com/Dudu876/java-multimodule-semantic-release",
-  "tagFormat": "service1_${version}",
+  "tagFormat": "core_${version}",
   "debug": "true",
   "plugins": [
     "@semantic-release/commit-analyzer",
@@ -16,7 +16,7 @@
     [
         "@semantic-release/exec",
         {
-            "publishCmd": "../mvnw -pl com.dudu:service1 -B -DskipTests -Dservice1.version=${nextRelease.version} clean deploy"
+            "publishCmd": "../mvnw -B -pl core -DskipTests -Dcore.version=${nextRelease.version} deploy"
         }
     ],
     [
