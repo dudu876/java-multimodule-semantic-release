@@ -39,10 +39,13 @@ jobs:
         VALUE="$(jq -nRc [inputs] changed.projects)"
         echo "$VALUE"
     - name: setup modules matrix
-      id: modules
+      id: set-matrix
       run: |
         VALUE="$(jq -nRc [inputs] changed.projects)"
-        echo "::set-output name=value::$VALUE"
+        echo "::set-output name=matrix::$VALUE"
+
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     # - name: release core
     #   working-directory: ./core
     #   run: npx semantic-release
@@ -76,7 +79,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        value: ${{fromJson(needs.setup.outputs.modules.value)}}
+        value: ${{fromJson(needs.setup.outputs.matrix)}}
     steps:
     - uses: actions/checkout@v3
       with:
