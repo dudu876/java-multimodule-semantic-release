@@ -80,7 +80,9 @@ jobs:
     strategy:
       matrix:
         value: ${{fromJson(needs.setup.outputs.matrix)}}
-    if: ${{ matrix.value == 'core' }}
+        exclude:
+        - value: service1
+        - value: service2
     steps:
     - uses: actions/checkout@v3
       with:
