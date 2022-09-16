@@ -36,12 +36,12 @@ jobs:
     #   run: npm install -g semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
     - name: test
       run: |
-        VALUE="$(jq -nRc [inputs] changed.projects)"
+        VALUE="$(jq -nR [inputs] changed.projects | jq -c 'map(select(length > 0))')"
         echo "$VALUE"
     - name: setup modules matrix
       id: set-matrix
       run: |
-        VALUE="$(jq -nRc [inputs] changed.projects)"
+        VALUE="$(jq -nR [inputs] changed.projects | jq -c 'map(select(length > 0))')"
         echo "::set-output name=matrix::$VALUE"
 
     outputs:
@@ -80,6 +80,7 @@ jobs:
     strategy:
       matrix:
         value: ${{fromJson(needs.setup.outputs.matrix)}}
+    if: ${{ matrix.value == 'core' }}
     steps:
     - uses: actions/checkout@v3
       with:
