@@ -77,6 +77,7 @@ jobs:
   release:
     needs: setup
     runs-on: ubuntu-latest
+    if: ${{ needs.setup.outputs.matrix != '[]' && needs.setup.outputs.matrix != '' }}
     strategy:
       matrix:
         value: ${{fromJson(needs.setup.outputs.matrix)}}
