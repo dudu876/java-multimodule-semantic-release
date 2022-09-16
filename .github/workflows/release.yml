@@ -99,7 +99,7 @@ jobs:
     #   run: ./mvnw -B package
     - name: setup semantic-release
       run: npm install -g semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
-    - run: cp .releaserc.json ${{ matrix.value }}/releaserc.json
+    - run: cp .releaserc.json ${{ matrix.value }}/.releaserc.json
     - run: sed -i -e 's/MODULE/${{ matrix.value }}/g' ${{ matrix.value }}/.releaserc.json
     - name: release
       working-directory: ./${{ matrix.value }}
