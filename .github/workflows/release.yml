@@ -76,7 +76,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        value: ${{fromJson(needs.setup.outputs.modules)}}
+        value: ${{fromJson(needs.setup.outputs.modules.value)}}
     steps:
     - uses: actions/checkout@v3
       with:
