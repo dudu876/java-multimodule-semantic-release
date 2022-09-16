@@ -108,6 +108,8 @@ jobs:
     - name: release
       working-directory: ./${{ matrix.value }}
       run: npx semantic-release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     # - name: release 1
     #   working-directory: ./service1
     #   run: npx semantic-release
