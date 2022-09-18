@@ -19,7 +19,7 @@
 
     <java.version>11</java.version>
 
-    <revision>1.0.10</revision>
+    <revision>1.0.11</revision>
     <mainClass>com.dudu.App</mainClass>
 
     <docker-image-name>ghcr.io/dudu876/java-multimodule-semantic-release/${project.name}</docker-image-name>
