@@ -21,31 +21,27 @@ jobs:
         fetch-depth: 0
         persist-credentials: false
     - name: Set up JDK 11
-      uses: actions/setup-java@v2
+      uses: actions/setup-java@v3
       with:
         java-version: '11'
         distribution: 'adopt'
         cache: maven
-    # - name: Setup Node.js
-    #   uses: actions/setup-node@v2
-    #   with:
-    #     node-version: 'lts/*'
-    - name: Build with Maven
-      run: ./mvnw -B validate -Dgib.referenceBranch=$(git rev-parse "@~1")
-    # - name: setup semantic-release
-    #   run: npm install -g semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
-    - name: test
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 'lts/*'
+    - name: Maven validate
+      run: ./mvnw -B -q validate -Dgib.referenceBranch=$(git rev-parse "@~1")
+    - name: setup semantic-release
+      run: npm install -g semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
+    - name: Output changed projects
       run: |
         VALUE="$(jq -nR [inputs] changed.projects | jq -c 'map(select(length > 0))')"
         echo "$VALUE"
-    - name: setup modules matrix
-      id: set-matrix
-      run: |
-        VALUE="$(jq -nR [inputs] changed.projects | jq -c 'map(select(length > 0))')"
-        echo "::set-output name=matrix::$VALUE"
-
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    - name: release
+      run: npx semantic-release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     # - name: release core
     #   working-directory: ./core
     #   run: npx semantic-release
@@ -74,42 +70,38 @@ jobs:
     #       git add '**/CHANGELOG.md' .
     #       git commit -m "chore(changelog): Update CHANGELOGs [skip ci]"
     #       git push
-  release:
-    needs: setup
-    runs-on: ubuntu-latest
-    if: ${{ needs.setup.outputs.matrix != '[]' && needs.setup.outputs.matrix != '' }}
-    strategy:
-      matrix:
-        value: ${{fromJson(needs.setup.outputs.matrix)}}
-        exclude:
-        - value: service1
-        - value: service2
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-        persist-credentials: false
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-        distribution: 'adopt'
-        cache: maven
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 'lts/*'
+  # release:
+  #   needs: setup
+  #   runs-on: ubuntu-latest
+  #   if: ${{ needs.setup.outputs.matrix != '[]' && needs.setup.outputs.matrix != '' }}
+  #   strategy:
+  #     matrix:
+  #       value: ${{fromJson(needs.setup.outputs.matrix)}}
+  #       exclude:
+  #       - value: service1
+  #       - value: service2
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #     with:
+  #       fetch-depth: 0
+  #       persist-credentials: false
+  #   - name: Set up JDK 11
+  #     uses: actions/setup-java@v2
+  #     with:
+  #       java-version: '11'
+  #       distribution: 'adopt'
+  #       cache: maven
+  #   - name: Setup Node.js
+  #     uses: actions/setup-node@v2
+  #     with:
+  #       node-version: 'lts/*'
     # - name: Build with Maven
     #   run: ./mvnw -B package
-    - name: setup semantic-release
-      run: npm install -g semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
-    - run: cp .releaserc.json ${{ matrix.value }}/.releaserc.json
-    - run: sed -i -e 's/MODULE/${{ matrix.value }}/g' ${{ matrix.value }}/.releaserc.json
-    - name: release
-      working-directory: ./${{ matrix.value }}
-      run: npx semantic-release
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # - name: setup semantic-release
+    #   run: npm install -g semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
+    # - run: cp .releaserc.json ${{ matrix.value }}/.releaserc.json
+    # - run: sed -i -e 's/MODULE/${{ matrix.value }}/g' ${{ matrix.value }}/.releaserc.json
+
     # - name: release 1
     #   working-directory: ./service1
     #   run: npx semantic-release

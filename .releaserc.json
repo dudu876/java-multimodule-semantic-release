@@ -1,7 +1,7 @@
 {
   "branches": [{"name": "main"}],
   "repositoryUrl": "https://github.com/Dudu876/java-multimodule-semantic-release",
-  "tagFormat": "MODULE_${version}",
+  "tagFormat": "v${version}",
   "debug": "true",
   "plugins": [
     "@semantic-release/commit-analyzer",
@@ -16,18 +16,9 @@
     [
         "@semantic-release/exec",
         {
-            "publishCmd": "cd .. && ./mvnw -pl core -B -DskipTests deploy"
+            "publishCmd": "./mvnw -B -DskipTests deploy"
         }
     ],
-    [
-      "@semantic-release/github",
-      {
-        "assets": [
-          {
-            "path": "target/*.jar"
-          }
-        ]
-      }
-    ]
+    "@semantic-release/github"
   ]
 }

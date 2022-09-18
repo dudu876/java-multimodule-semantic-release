@@ -9,7 +9,7 @@
 
   <groupId>com.dudu</groupId>
   <artifactId>service2</artifactId>
-  <version>${service2.version}</version>
+  <version>${revision}</version>
   <packaging>jar</packaging>
 
   <name>service2</name>

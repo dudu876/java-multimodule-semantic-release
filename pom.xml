@@ -13,9 +13,10 @@
   <url>http://www.example.com</url>
   
   <properties>
-    <core.version>1.0-SNAPSHOT</core.version>
+    <!-- <core.version>1.0-SNAPSHOT</core.version>
     <service1.version>1.0-SNAPSHOT</service1.version>
-    <service2.version>1.0-SNAPSHOT</service2.version>
+    <service2.version>1.0-SNAPSHOT</service2.version> -->
+    <revision>1.0-SNAPSHOT</revision>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
