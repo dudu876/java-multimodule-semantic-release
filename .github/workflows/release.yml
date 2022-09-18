@@ -67,7 +67,7 @@ jobs:
         password: ${{ secrets.GH_TOKEN }}
     - name: Docker push
       env:
-        PUSH_REGISTRY: ${{ env.REGISTRY/dudu876 }}
+        PUSH_REGISTRY: ${{ format('{0}/{1}', env.REGISTRY, 'dudu876' }}
       run: |
         echo "Pushing image to ECR..."
         for module in $(cat changed.projects); do
