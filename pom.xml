@@ -5,7 +5,7 @@
   
   <groupId>com.dudu</groupId>
   <artifactId>java-multimodule-semantic-release</artifactId>
-  <version>1.0.0</version>
+  <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   
   <name>java-multimodule-semantic-release</name>
@@ -16,7 +16,7 @@
     <!-- <core.version>1.0-SNAPSHOT</core.version>
     <service1.version>1.0-SNAPSHOT</service1.version>
     <service2.version>1.0-SNAPSHOT</service2.version> -->
-    <revision>1.0-SNAPSHOT</revision>
+    <revision>1.0.0</revision>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>

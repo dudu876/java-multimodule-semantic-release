@@ -13,7 +13,7 @@ env:
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
-  setup:
+  release:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
