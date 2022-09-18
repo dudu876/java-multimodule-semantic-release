@@ -19,7 +19,7 @@
 
     <java.version>11</java.version>
 
-    <revision>1.0.16</revision>
+    <revision>1.0.17</revision>
     <mainClass>com.dudu.App</mainClass>
 
     <docker.buildArg.version>${project.version}</docker.buildArg.version>
