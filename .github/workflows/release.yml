@@ -30,7 +30,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 'lts/*'
-        cache: 'npm'
+        # cache: 'npm'
     - name: Maven validate
       run: ./mvnw -B -q validate -Dgib.referenceBranch=$(git rev-parse "@~1")
     - name: setup semantic-release
