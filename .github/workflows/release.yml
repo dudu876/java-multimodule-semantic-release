@@ -51,6 +51,7 @@ jobs:
       with:
         node-version: 'lts/*'
         cache: 'npm'
+        cache-dependency-path: .github/package-lock.json
     - name: setup semantic-release
       run: npm install semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
     - name: release
