@@ -16,7 +16,7 @@
     [
         "@semantic-release/exec",
         {
-            "publishCmd": "./mvnw -B -DskipTests -Drevision=${nextRelease.version} deploy"
+            "publishCmd": "./mvnw -B -q -DskipTests -Drevision=${nextRelease.version} deploy"
         }
     ],
     "@semantic-release/github"
