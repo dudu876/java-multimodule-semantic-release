@@ -17,7 +17,7 @@
         "@semantic-release/exec",
         {
           "prepareCmd": "./mvnw -B versions:set-property -Dproperty=revision -DgenerateBackupPoms=false -DnewVersion=${nextRelease.version}",
-          "publishCmd": "./mvnw -B -DskipTests -Drevision=${nextRelease.version} -Ddocker.push.registry=ghcr.io/dudu876/semantic-multimodule deploy"
+          "publishCmd": "./mvnw -B -DskipTests -Drevision=${nextRelease.version} -Ddocker.push.registry=$REGISTRY/$GITHUB_REPOSITORY deploy"
         }
     ],
     [
