@@ -41,8 +41,18 @@ jobs:
       run: npm install semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
     - name: Output changed projects
       run: |
-        VALUE="$(jq -nR [inputs] changed.projects | jq -c 'map(select(length > 0))')"
-        echo "$VALUE"
+        if [ -s changed.projects ]; then
+          echo "Going to release the following nodules:"
+          while read -r line; do 
+            echo $line
+          done < changed.projects
+        else 
+          echo "No modules to build"
+          exit 1
+        fi
+      # run: |
+      #   VALUE="$(jq -nR [inputs] changed.projects | jq -c 'map(select(length > 0))')"
+      #   echo "$VALUE"
     - name: Log in to the Container registry
       uses: docker/login-action@v2
       with:
