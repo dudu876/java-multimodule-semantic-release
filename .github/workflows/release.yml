@@ -76,7 +76,7 @@ jobs:
             echo "Pushing $repo:tag..."
             docker tag $repo:$tag $PUSH_REGISTRY/$repo:$tag
             docker tag $repo:latest $PUSH_REGISTRY/$repo:latest
-            docker push $repo --all-tags -q
+            docker push $repo --all-tags
           done
         done
     # - name: release core
