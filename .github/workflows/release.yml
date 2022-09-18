@@ -30,11 +30,11 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 'lts/*'
-        # cache: 'npm'
+        cache: 'npm'
     - name: Maven validate
       run: ./mvnw -B -q validate -Dgib.referenceBranch=$(git rev-parse "@~1")
     - name: setup semantic-release
-      run: npm install -g semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
+      run: npm install semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
     - name: Output changed projects
       run: |
         VALUE="$(jq -nR [inputs] changed.projects | jq -c 'map(select(length > 0))')"

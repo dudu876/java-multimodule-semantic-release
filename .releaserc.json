@@ -16,7 +16,7 @@
     [
         "@semantic-release/exec",
         {
-          "prepareCmd": "./mvnw -B versions:set -DgenerateBackupPoms=false -DnewVersion=${nextRelease.version}",
+          "prepareCmd": "./mvnw -B -q versions:set -DgenerateBackupPoms=false -DnewVersion=${nextRelease.version}",
           "publishCmd": "./mvnw -B -q -DskipTests -Drevision=${nextRelease.version} deploy"
         }
     ],
