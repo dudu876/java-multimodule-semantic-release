@@ -22,9 +22,9 @@
     <revision>1.0.8</revision>
     <mainClass>com.dudu.App</mainClass>
 
-    <docker-image-name>${project.name}</docker-image-name>
+    <docker-image-name>ghcr.io/dudu876/java-multimodule-semantic-release/${project.name}</docker-image-name>
     <docker.buildArg.version>${project.version}</docker.buildArg.version>
-    <docker-build-from>openjdk:11</docker-build-from>
+    <docker-build-from>eclipse-temurin:11-jre</docker-build-from>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
@@ -133,13 +133,13 @@
                   </goals>
                   <phase>package</phase>
               </execution>
-              <execution>
+              <!-- <execution>
                   <id>push-image</id>
                   <goals>
                       <goal>push</goal>
                   </goals>
                   <phase>deploy</phase>
-              </execution>
+              </execution> -->
           </executions>
           <configuration>
               <verbose>true</verbose>

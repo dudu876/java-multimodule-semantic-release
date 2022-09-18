@@ -63,6 +63,15 @@ jobs:
       run: npx semantic-release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Docker push
+      run: |
+        echo "Pushing image to ECR..."
+        for module in $(cat changed.projects); do
+          docker images | grep $module | grep latest | while read -r line; do
+            IFS=' ' read -r repo tag a <<< "$line"
+            docker push $repo --all-tags
+          done
+        done
     # - name: release core
     #   working-directory: ./core
     #   run: npx semantic-release
