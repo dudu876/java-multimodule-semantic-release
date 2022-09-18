@@ -30,15 +30,8 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
         cache: 'maven'
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 'lts/*'
-        cache: 'npm'
     - name: Maven validate
       run: ./mvnw -B -q validate -Dgib.referenceBranch=$(git rev-parse "@~1")
-    - name: setup semantic-release
-      run: npm install semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
     - name: Output changed projects
       run: |
         if [ -s changed.projects ]; then
@@ -53,6 +46,13 @@ jobs:
       # run: |
       #   VALUE="$(jq -nR [inputs] changed.projects | jq -c 'map(select(length > 0))')"
       #   echo "$VALUE"
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 'lts/*'
+        cache: 'npm'
+    - name: setup semantic-release
+      run: npm install semantic-release @semantic-release/exec @semantic-release/git @semantic-release/changelog @semantic-release-plus/docker -D
     - name: Log in to the Container registry
       uses: docker/login-action@v2
       with:
