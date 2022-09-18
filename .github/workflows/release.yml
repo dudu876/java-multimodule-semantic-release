@@ -75,6 +75,7 @@ jobs:
             IFS=' ' read -r repo tag a <<< "$line"
             echo "Pushing $repo:tag..."
             docker $repo:$tag $PUSH_REGISTRY/$repo:$tag
+            docker $repo:latest $PUSH_REGISTRY/$repo:latest
             docker push $repo --all-tags -q
           done
         done
