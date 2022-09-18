@@ -115,13 +115,13 @@
       </plugins>
     </pluginManagement>
     <plugins>
-      <plugin>
+      <!-- <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-deploy-plugin</artifactId>
         <configuration>
           <skip>true</skip>
         </configuration>
-      </plugin>
+      </plugin> -->
       <!-- <plugin>
         <groupId>com.lesfurets</groupId>
         <artifactId>partial-build-plugin</artifactId>
