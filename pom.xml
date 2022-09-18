@@ -16,7 +16,15 @@
     <!-- <core.version>1.0-SNAPSHOT</core.version>
     <service1.version>1.0-SNAPSHOT</service1.version>
     <service2.version>1.0-SNAPSHOT</service2.version> -->
+
+    <java.version>11</java.version>
+
     <revision>1.0.1</revision>
+    <mainClass>com.dudu.App</mainClass>
+
+    <docker-image-name>${project.name}</docker-image-name>
+    <docker.buildArg.version>${project.version}</docker.buildArg.version>
+    <docker-build-from>openjdk:11</docker-build-from>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
@@ -113,6 +121,54 @@
             </execution>
           </executions>
         </plugin>
+        <plugin>
+          <groupId>io.fabric8</groupId>
+          <artifactId>docker-maven-plugin</artifactId>
+          <version>0.40.2</version>
+          <executions>
+              <execution>
+                  <id>build-image</id>
+                  <goals>
+                      <goal>build</goal>
+                  </goals>
+                  <phase>package</phase>
+              </execution>
+              <execution>
+                  <id>push-image</id>
+                  <goals>
+                      <goal>push</goal>
+                  </goals>
+                  <phase>deploy</phase>
+              </execution>
+          </executions>
+          <configuration>
+              <verbose>true</verbose>
+              <containerNamePattern>%n</containerNamePattern>
+              <images>
+                  <image>
+                      <alias>${docker-image-name}</alias>
+                      <name>${docker-image-name}</name>
+                      <build>
+                          <from>${docker-build-from}</from>
+                          <assemblies>
+                              <assembly>
+                                  <mode>dir</mode>
+                                  <descriptorRef>artifact</descriptorRef>
+                                  <targetDir>/maven</targetDir>
+                              </assembly>
+                          </assemblies>
+                          <tags>
+                              <tag>${project.version}</tag>
+                              <tag>latest</tag>
+                          </tags>
+                          <entryPoint>
+                              <shell>java $JVM_OPTS -cp maven/${project.artifactId}-${project.version}.jar ${mainClass}</shell>
+                          </entryPoint>
+                      </build>
+                  </image>
+              </images>
+          </configuration>
+      </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
