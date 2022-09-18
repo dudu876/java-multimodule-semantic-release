@@ -1,5 +1,12 @@
 # Semantic Versioning Changelog
 
+## [1.0.6](https://github.com/Dudu876/java-multimodule-semantic-release/compare/1.0.5...1.0.6) (2022-09-18)
+
+
+### Bug Fixes
+
+* test new release ([ad1dc2e](https://github.com/Dudu876/java-multimodule-semantic-release/commit/ad1dc2efd34e89789b020dc8c3d05f770edc463a))
+
 ## [1.0.5](https://github.com/Dudu876/java-multimodule-semantic-release/compare/1.0.4...1.0.5) (2022-09-18)
 
 
