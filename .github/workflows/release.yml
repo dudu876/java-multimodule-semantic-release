@@ -33,16 +33,17 @@ jobs:
     - name: Maven validate
       run: ./mvnw -B -q validate -Dgib.referenceBranch=$(git rev-parse "@~1")
     - name: Output changed projects
-      run: |
-        if [ -s changed.projects ]; then
-          echo "Going to release the following nodules:"
-          while read -r line; do 
-            echo $line
-          done < changed.projects
-        else 
-          echo "No modules to build"
-          exit 1
-        fi
+      run: while read -r line; do echo $line; done < changed.projects
+      # run: |
+      #   if [ -s changed.projects ]; then
+      #     echo "Going to release the following nodules:"
+      #     while read -r line; do 
+      #       echo $line
+      #     done < changed.projects
+      #   else 
+      #     echo "No modules to build"
+      #     exit 1
+      #   fi
       # run: |
       #   VALUE="$(jq -nR [inputs] changed.projects | jq -c 'map(select(length > 0))')"
       #   echo "$VALUE"
@@ -70,7 +71,8 @@ jobs:
         for module in $(cat changed.projects); do
           docker images | grep $module | grep latest | while read -r line; do
             IFS=' ' read -r repo tag a <<< "$line"
-            docker push $repo --all-tags
+            echo "Pushing $repo:tag..."
+            docker push $repo --all-tags -q
           done
         done
     # - name: release core
