@@ -17,7 +17,7 @@
         "@semantic-release/exec",
         {
           "prepareCmd": "./mvnw -B -q versions:set-property -Dproperty=revision -DgenerateBackupPoms=false -DnewVersion=${nextRelease.version}",
-          "publishCmd": "./mvnw -B -q -DskipTests -Drevision=${nextRelease.version} -Ddocker-image-name-prefix=$REGISTRY/$GITHUB_ACTOR/ deploy"
+          "publishCmd": "./mvnw -B -q -DskipTests -Drevision=${nextRelease.version} deploy"
         }
     ],
     [
