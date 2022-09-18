@@ -23,8 +23,7 @@
     <mainClass>com.dudu.App</mainClass>
 
     <docker.buildArg.version>${project.version}</docker.buildArg.version>
-    <docker-image-name-prefix></docker-image-name-prefix>
-    <docker-image-name>${docker-image-name-prefix}java-multimodule-semantic-release/${project.name}</docker-image-name>
+    <docker-image-name>java-multimodule-semantic-release/${project.name}</docker-image-name>
     <docker-build-from>eclipse-temurin:11-jre</docker-build-from>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
