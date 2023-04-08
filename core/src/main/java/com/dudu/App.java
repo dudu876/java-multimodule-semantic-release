@@ -9,6 +9,6 @@ public class App
     public static void main( String[] args )
     {
         System.out.println("Hello core");
-        System.out.println("6");
+        System.out.println("7");
     }
 }
