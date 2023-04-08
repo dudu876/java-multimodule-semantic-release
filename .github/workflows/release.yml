@@ -35,6 +35,8 @@ jobs:
     - name: Output changed projects
       run: while read -r line; do echo $line; done < changed.projects
     - name: Deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: ./mvnw -DskipTests deploy -Dgib.referenceBranch=$(git rev-parse "@~1")
       # run: |
       #   if [ -s changed.projects ]; then
