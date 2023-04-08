@@ -32,3 +32,6 @@ changed.projects
 *maven-wrapper.jar
 settings.xml
 *.flattened-pom.xml
+
+# IDE
+.idea/
