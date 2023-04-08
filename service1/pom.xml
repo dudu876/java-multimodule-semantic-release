@@ -9,7 +9,7 @@
 
   <groupId>com.dudu</groupId>
   <artifactId>service1</artifactId>
-  <version>${revision}</version>
+  <version>${revisions.service1}</version>
   <packaging>jar</packaging>
 
   <distributionManagement>
@@ -41,7 +41,7 @@
     <dependency>
       <groupId>com.dudu</groupId>
       <artifactId>core</artifactId>
-      <version>${revision}</version>
+      <version>${revisions.core}</version>
     </dependency>
   </dependencies>
 

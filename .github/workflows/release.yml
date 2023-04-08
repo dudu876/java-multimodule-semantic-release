@@ -34,6 +34,8 @@ jobs:
       run: ./mvnw -B -q validate -Dgib.referenceBranch=$(git rev-parse "@~1")
     - name: Output changed projects
       run: while read -r line; do echo $line; done < changed.projects
+    - name: Deploy
+      run: ./mvnw -B -q -DskipTests deploy
       # run: |
       #   if [ -s changed.projects ]; then
       #     echo "Going to release the following nodules:"
@@ -59,26 +61,26 @@ jobs:
 #      run: npx semantic-release
 #      env:
 #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Log in to the Container registry
-      uses: docker/login-action@v2
-      with:
-        registry: ${{ env.REGISTRY }}
-        username: ${{ github.actor }}
-        password: ${{ secrets.GH_TOKEN }}
-    - name: Docker push
-      env:
-        PUSH_REGISTRY: ${{ format('{0}/{1}', env.REGISTRY, 'dudu876') }}
-      run: |
-        echo "Pushing image to ECR..."
-        for module in $(cat changed.projects); do
-          docker images | grep $module | grep -v latest | while read -r line; do
-            IFS=' ' read -r repo tag a <<< "$line"
-            echo "Pushing $repo:$tag..."
-            docker tag $repo:$tag $PUSH_REGISTRY/$repo:$tag
-            docker tag $repo:latest $PUSH_REGISTRY/$repo:latest
-            docker push $PUSH_REGISTRY/$repo --all-tags -q
-          done
-        done
+#    - name: Log in to the Container registry
+#      uses: docker/login-action@v2
+#      with:
+#        registry: ${{ env.REGISTRY }}
+#        username: ${{ github.actor }}
+#        password: ${{ secrets.GH_TOKEN }}
+#    - name: Docker push
+#      env:
+#        PUSH_REGISTRY: ${{ format('{0}/{1}', env.REGISTRY, 'dudu876') }}
+#      run: |
+#        echo "Pushing image to ECR..."
+#        for module in $(cat changed.projects); do
+#          docker images | grep $module | grep -v latest | while read -r line; do
+#            IFS=' ' read -r repo tag a <<< "$line"
+#            echo "Pushing $repo:$tag..."
+#            docker tag $repo:$tag $PUSH_REGISTRY/$repo:$tag
+#            docker tag $repo:latest $PUSH_REGISTRY/$repo:latest
+#            docker push $PUSH_REGISTRY/$repo --all-tags -q
+#          done
+#        done
     # - name: release core
     #   working-directory: ./core
     #   run: npx semantic-release

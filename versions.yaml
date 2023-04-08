@@ -1,0 +1,4 @@
+versions:
+  core: 1.0.20
+  service1: 1.0.21
+  service2: 1.0.21
