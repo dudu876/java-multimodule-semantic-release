@@ -35,7 +35,7 @@ jobs:
     - name: Output changed projects
       run: while read -r line; do echo $line; done < changed.projects
     - name: Deploy
-      run: ./mvnw -B -q -DskipTests deploy
+      run: ./mvnw -DskipTests deploy
       # run: |
       #   if [ -s changed.projects ]; then
       #     echo "Going to release the following nodules:"
